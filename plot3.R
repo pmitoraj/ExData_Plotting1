@@ -18,10 +18,25 @@ time <- seq(as.POSIXct("2007-02-01 00:00:00"),by="min",length.out=nrow(household
 household_subset$Time <- time
 
 # save the plot into png file
-png(filename="figure/plot2.png")
-plot( household_subset$Time,
-     household_subset$Global_active_power,
+png(filename="figure/plot3.png")
+plot(household_subset$Time,
+     household_subset$Sub_metering_1,
      type="l",
-     ylab="Global Active Power (Kilowatts)",
-     xlab="")
+     ylab="Energy sub metering",
+     xlab="",
+     col='black')
+lines(household_subset$Time,
+     household_subset$Sub_metering_2,
+     type="l",
+     ylab="Energy sub metering",
+     xlab="",
+     col='red')
+lines(household_subset$Time,
+     household_subset$Sub_metering_3,
+     type="l",
+     ylab="Energy sub metering",
+     xlab="",
+     col='blue')
+legend(x='topright', c('Sub_metering_1','Sub_metering_2','Sub_metering_3'),
+       col=c("black","red","blue"),lty=c(1,1,1))
 dev.off()
